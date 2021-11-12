@@ -3,6 +3,8 @@
 
 #include <optional>
 
+#include "core/Ray.hpp"
+
 #include "shape/base/HitRecord.hpp"
 
 namespace rt::shape::base

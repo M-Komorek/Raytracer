@@ -1,7 +1,9 @@
 #ifndef RAYTRACER_SCENE_CAMERA_HPP
 #define RAYTRACER_SCENE_CAMERA_HPP
 
-#include "include/core/Ray.hpp"
+#include "core/Point3.hpp"
+#include "core/Ray.hpp"
+#include "core/Vector3.hpp"
 
 namespace rt::scene
 {

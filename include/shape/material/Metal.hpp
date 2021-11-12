@@ -2,6 +2,9 @@
 #define RAYTRACER_SHAPE_MATERIAL_METAL_HPP
 
 #include "core/Color.hpp"
+#include "core/Ray.hpp"
+
+#include "shape/base/HitRecord.hpp"
 #include "shape/material/IMaterial.hpp"
 
 namespace rt::shape::material

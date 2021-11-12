@@ -3,6 +3,8 @@
 
 #include "core/Color.hpp"
 #include "core/Ray.hpp"
+
+#include "shape/base/HitRecord.hpp"
 #include "shape/material/IMaterial.hpp"
 
 namespace rt::shape::material

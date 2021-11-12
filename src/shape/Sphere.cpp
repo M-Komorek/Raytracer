@@ -1,5 +1,6 @@
-#include <cmath>
 #include "shape/Sphere.hpp"
+
+#include <cmath>
 
 namespace rt::shape
 {

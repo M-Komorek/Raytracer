@@ -6,14 +6,14 @@
 #include "core/Ray.hpp"
 #include "core/Utils.hpp"
 
+#include "scene/Camera.hpp"
+
 #include "shape/base/HittableList.hpp"
 #include "shape/Sphere.hpp"
 #include "shape/base/HitRecord.hpp"
 #include "shape/material/IMaterial.hpp"
 #include "shape/material/Matte.hpp"
 #include "shape/material/Metal.hpp"
-
-#include "scene/Camera.hpp"
 
 // Temporary - to refactor
 // It should be hidden by some kind of abstraction
@@ -63,6 +63,7 @@ int main()
     world.add(std::make_unique<rt::shape::Sphere>(rightMaterial2, rt::core::Point3( 1.10,   -0.4, -0.90),  0.1));
     world.add(std::make_unique<rt::shape::Sphere>(leftMaterial1,  rt::core::Point3(-0.95,      0, -1.35), 0.5));
     world.add(std::make_unique<rt::shape::Sphere>(leftMaterial2,  rt::core::Point3( 0.00,      0, -2.55), 0.5));
+
     // Camera
     rt::scene::Camera camera{};
 

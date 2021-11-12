@@ -3,8 +3,9 @@
 
 #include <memory>
 
+#include "core/Point3.hpp"
 #include "core/Ray.hpp"
-#include "shape/material/IMaterial.hpp"
+#include "core/Vector3.hpp"
 
 namespace rt::shape::material
 {

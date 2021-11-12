@@ -4,7 +4,10 @@
 #include <memory>
 #include <vector>
 
+#include "core/Ray.hpp"
+
 #include "shape/base/IHittable.hpp"
+#include "shape/base/HitRecord.hpp"
 
 namespace rt::shape::base
 {

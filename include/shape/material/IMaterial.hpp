@@ -6,12 +6,8 @@
 
 #include "core/Color.hpp"
 #include "core/Ray.hpp"
-#include "shape/base/HitRecord.hpp"
 
-namespace rt::shape::base
-{
-    class HitRecord;
-}
+#include "shape/base/HitRecord.hpp"
 
 namespace rt::shape::material
 {

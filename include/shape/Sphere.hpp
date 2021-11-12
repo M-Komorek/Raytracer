@@ -4,6 +4,8 @@
 #include <memory>
 
 #include "core/Point3.hpp"
+#include "core/Ray.hpp"
+
 #include "shape/base/IHittable.hpp"
 #include "shape/base/HitRecord.hpp"
 #include "shape/material/IMaterial.hpp"
