@@ -13,21 +13,6 @@ public:
     Vector3();
     Vector3(const double x, const double y, const double z);
 
-    Vector3 operator+(const Vector3& vector) const;
-    Vector3 operator-(const Vector3& vector) const;
-    Vector3& operator+=(const Vector3& vector);
-    Vector3& operator-=(const Vector3& vector);
-    Vector3 operator*(const double scale) const;
-    Vector3 operator/(const double scale) const;
-
-    double length() const;
-    double scalarProduct(const Vector3& vec) const;
-    Vector3 crossProduct(const Vector3& vec) const;
-    void normalize();
-
-    std::string toString() const override;
-
-
     inline static Vector3 generateRandomVector3(const double min = 0, const double max = 1)
     {
         return Vector3(randomDouble(min, max), randomDouble(min, max), randomDouble(min, max));
@@ -43,6 +28,21 @@ public:
             return randomVectorInsideunitShpere;
         }
     }
+
+    Vector3 operator+(const Vector3& vector) const;
+    Vector3 operator-(const Vector3& vector) const;
+    Vector3& operator+=(const Vector3& vector);
+    Vector3& operator-=(const Vector3& vector);
+    Vector3 operator*(const double scale) const;
+    Vector3 operator/(const double scale) const;
+
+    double length() const;
+    double scalarProduct(const Vector3& vec) const;
+    Vector3 crossProduct(const Vector3& vec) const;
+    Vector3 normalize();
+    bool isAlmostZero() const;
+
+    std::string toString() const override;
 };
 
 } // rt::core

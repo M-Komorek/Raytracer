@@ -1,7 +1,15 @@
 #ifndef RAYTRACER_SHAPE_BASE_HITRECORD_HPP
 #define RAYTRACER_SHAPE_BASE_HITRECORD_HPP
 
+#include <memory>
+
 #include "core/Ray.hpp"
+#include "shape/material/IMaterial.hpp"
+
+namespace rt::shape::material
+{
+    class IMaterial;
+}
 
 namespace rt::shape::base
 {
@@ -9,9 +17,10 @@ namespace rt::shape::base
 struct HitRecord
 {
     double t;
+    bool frontFace;
     core::Point3 borderPoint;
     core::Vector3 normal;
-    bool frontFace;
+    std::shared_ptr<material::IMaterial> material;
 
     inline void setFrontFaceAndNormal(const core::Ray& ray, const core::Vector3& outwardNormal)
     {

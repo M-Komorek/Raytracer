@@ -57,6 +57,16 @@ TEST(ColorShould, multiplyByScalar)
     testUtils::isEqual<rt::core::Color>(color, expectedResult);
 }
 
+TEST(ColorShould, multiplyByColor)
+{
+    rt::core::Color color1{1, 2, 3};
+    rt::core::Color color2{3, 2, 1};
+
+    const rt::core::Color expectedResult{3, 4, 3};
+
+    testUtils::isEqual<rt::core::Color>(color1*color2, expectedResult);
+}
+
 TEST(ColorShould, serializeToStream)
 {
     rt::core::Color color{1.1, 2.2, 3.0};

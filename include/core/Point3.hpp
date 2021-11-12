@@ -13,8 +13,8 @@ public:
     Point3();
     Point3(const double x, const double y, const double z);
 
-    Point3 operator+(const Vector3& vecor) const;
-    Point3 operator-(const Vector3& vecor) const;
+    Point3 operator+(const Vector3& vector) const;
+    Point3 operator-(const Vector3& vector) const;
     Vector3 operator-(const Point3& point) const;
 
     std::string toString() const override;

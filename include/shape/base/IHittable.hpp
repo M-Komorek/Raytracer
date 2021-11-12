@@ -1,5 +1,5 @@
-#ifndef RAYTRACER_SHAPE_BASE_HITTABLE_HPP
-#define RAYTRACER_SHAPE_BASE_HITTABLE_HPP
+#ifndef RAYTRACER_SHAPE_BASE_IHITTABLE_HPP
+#define RAYTRACER_SHAPE_BASE_IHITTABLE_HPP
 
 #include <optional>
 
@@ -12,11 +12,12 @@ class IHittable
 {
 public:
     virtual ~IHittable() = default;
-    virtual std::optional<double> gotHittedByRay(const core::Ray& ray, const double& tmin,
-        const double& tmax) const = 0;
-    virtual base::HitRecord calculateHitRecord(const core::Ray& ray, const double& t) const = 0;
+    virtual std::optional<double> gotHittedByRay(
+        const core::Ray& ray, const double tmin, const double tmax) const = 0;
+    virtual base::HitRecord calculateHitRecord(
+        const core::Ray& ray, const double t) const = 0;
 };
 
 } // rt::shape::base
 
-#endif // RAYTRACER_SHAPE_BASE_HITTABLE_HPP
+#endif // RAYTRACER_SHAPE_BASE_IHITTABLE_HPP

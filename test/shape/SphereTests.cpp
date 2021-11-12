@@ -10,7 +10,7 @@ TEST(SphereShould, returnNoneWhileHittedByRayAndDeltaIsNegative)
     const rt::core::Vector3 direction{2,2,2};
     const rt::core::Ray ray{origin, direction};
 
-    const rt::shape::Sphere sphere{rt::core::Point3(0,0,0), 1};
+    const rt::shape::Sphere sphere{nullptr, rt::core::Point3(0,0,0), 1};
 
     const auto timeOfHit = sphere.gotHittedByRay(ray, 1, 10);
 
@@ -23,7 +23,7 @@ TEST(SphereShould, returnNoneWhileHittedByRayButOverTimeLimit)
     const rt::core::Vector3 direction{2,2,2};
     const rt::core::Ray ray{origin, direction};
 
-    const rt::shape::Sphere sphere{rt::core::Point3(0,0,1), 1};
+    const rt::shape::Sphere sphere{nullptr, rt::core::Point3(0,0,1), 1};
 
     const auto timeOfHit = sphere.gotHittedByRay(ray, 1, 10);
 
@@ -36,7 +36,7 @@ TEST(SphereShould, returnTimeWhileHittedByRayInTimeLimitNegativeRoot)
     const rt::core::Vector3 direction{2,2,2};
     const rt::core::Ray ray{origin, direction};
 
-    const rt::shape::Sphere sphere{rt::core::Point3(0,0,1), 1};
+    const rt::shape::Sphere sphere{nullptr, rt::core::Point3(0,0,1), 1};
 
     const auto timeOfHit = sphere.gotHittedByRay(ray, -1, 10);
 
@@ -49,7 +49,7 @@ TEST(SphereShould, returnTimeWhileHittedByRayInTimeLimitPositiveRoot)
     const rt::core::Vector3 direction{2,2,2};
     const rt::core::Ray ray{origin, direction};
 
-    const rt::shape::Sphere sphere{rt::core::Point3(0,0,1), 1};
+    const rt::shape::Sphere sphere{nullptr, rt::core::Point3(0,0,1), 1};
 
     const auto timeOfHit = sphere.gotHittedByRay(ray, 0, 10);
 
@@ -62,7 +62,7 @@ TEST(SphereShould, calculateHitRecord)
     const rt::core::Vector3 direction{2,2,2};
     const rt::core::Ray ray{origin, direction};
 
-    const rt::shape::Sphere sphere{rt::core::Point3(0,0,0), 1};
+    const rt::shape::Sphere sphere{nullptr, rt::core::Point3(0,0,0), 1};
 
     const auto hitRecord = sphere.calculateHitRecord(ray, 1);
 

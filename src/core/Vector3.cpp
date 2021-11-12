@@ -68,12 +68,16 @@ Vector3 Vector3::crossProduct(const Vector3& vec) const
     return Vector3(crossProductX, crossProductY, crossProductZ);
 }
 
-void Vector3::normalize()
+Vector3 Vector3::normalize()
 {
     const double length = this->length();
-    x_ /= length;
-    y_ /= length;
-    z_ /= length;
+    return Vector3(x_/length, y_/length, z_/length);
+}
+
+bool Vector3::isAlmostZero() const
+{
+    const auto s = 1e-9;
+    return (fabs(x_) < s) && (fabs(y_) < s) && (fabs(z_) < s);
 }
 
 std::string Vector3::toString() const

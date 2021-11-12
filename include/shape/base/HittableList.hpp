@@ -18,7 +18,7 @@ public:
     void clear();
 
     std::optional<HitRecord> getClosestHitRecord(
-        const core::Ray& ray, const double& tmin, const double& tmax) const;
+        const core::Ray& ray, const double tmin, const double tmax) const;
 
 private:
     std::vector<std::unique_ptr<IHittable>> shapes_;

@@ -33,6 +33,11 @@ Color Color::operator*(const double scale) const
     return Color(x_*scale, y_*scale, z_*scale);
 }
 
+Color Color::operator*(const Color& color) const
+{
+    return Color(x_*color.x(), y_*color.y(), z_*color.z());
+}
+
 double Color::red() const {return x_;}
 double Color::green() const {return y_;}
 double Color::blue() const {return z_;}

@@ -19,6 +19,7 @@ public:
     Color operator+(const Color& color) const;
     Color& operator+=(const Color& color);
     Color operator*(const double scale) const;
+    Color operator*(const Color& color) const;
 
     double red() const;
     double green() const;

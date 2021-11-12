@@ -14,7 +14,7 @@ void HittableList::clear()
 }
 
 std::optional<HitRecord> HittableList::getClosestHitRecord(
-    const core::Ray& ray, const double& tmin, const double& tmax) const
+    const core::Ray& ray, const double tmin, const double tmax) const
 {
     double closestSoFar = tmax;
     std::optional<HitRecord> closestHitRecord{};
@@ -31,7 +31,7 @@ std::optional<HitRecord> HittableList::getClosestHitRecord(
     if (closestHitRecord)
         return closestHitRecord;
     else
-        return {};
+        return std::nullopt;
 }
 
 } // rt::shape::base

@@ -22,8 +22,8 @@ TEST(HittableListShould, returnClosestHitRecordWhenThereAreShapes)
     const rt::core::Ray ray{origin, direction};
 
     rt::shape::base::HittableList hittableList{};
-    hittableList.add(std::make_unique<rt::shape::Sphere>(rt::core::Point3(0,0,1), 1));
-    hittableList.add(std::make_unique<rt::shape::Sphere>(rt::core::Point3(0,0,1), 2));
+    hittableList.add(std::make_unique<rt::shape::Sphere>(nullptr, rt::core::Point3(0,0,1), 1));
+    hittableList.add(std::make_unique<rt::shape::Sphere>(nullptr, rt::core::Point3(0,0,1), 2));
     const auto result1 = hittableList.getClosestHitRecord(ray, 0, 10);
     const auto result2 = hittableList.getClosestHitRecord(ray, -10, 10);
 

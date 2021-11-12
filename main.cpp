@@ -9,6 +9,9 @@
 #include "shape/base/HittableList.hpp"
 #include "shape/Sphere.hpp"
 #include "shape/base/HitRecord.hpp"
+#include "shape/material/IMaterial.hpp"
+#include "shape/material/Matte.hpp"
+#include "shape/material/Metal.hpp"
 
 #include "scene/Camera.hpp"
 
@@ -25,16 +28,16 @@ rt::core::Color rayColor(
 
     if(hitRecord)
     {
-        const auto targetPoint = hitRecord.value().borderPoint + hitRecord.value().normal 
-            + rt::core::Vector3::generateRandomVector3InsideUnitSphere();
-        return rayColor(rt::core::Ray(
-            hitRecord.value().borderPoint, targetPoint-hitRecord.value().borderPoint), world, depth-1) * 0.5;
+        const auto scatterRay = hitRecord.value().material->procudeScatterRay(ray, hitRecord.value());
+        if (scatterRay)
+            return hitRecord.value().material->getReflectedLight() * rayColor(scatterRay.value(), world, depth-1);
+        return rt::core::Color(0,0,0);
     }
 
     auto rayDirection(ray.getDirection());
     rayDirection.normalize();
     const auto t = 0.5*(rayDirection.y() + 1.0);
-    return rt::core::Color()*(1.0-t) + rt::core::Color(0.5, 0.7, 1.0)*t;
+    return rt::core::Color(1.0, 1.0, 1.0)*(1.0-t) + rt::core::Color(0.5, 0.7, 1.0)*t;
 }
 
 int main()
@@ -48,9 +51,18 @@ int main()
 
     // World
     rt::shape::base::HittableList world;
-    world.add(std::make_unique<rt::shape::Sphere>(rt::core::Point3(0,0,-1), 0.5));
-    world.add(std::make_unique<rt::shape::Sphere>(rt::core::Point3(0,-100.5,-1), 100));
 
+    const auto groundMaterial = std::make_shared<rt::shape::material::Matte>(rt::core::Color(0.80, 0.80, 0.80));
+    const auto rightMaterial1 = std::make_shared<rt::shape::material::Matte>(rt::core::Color(0.70, 0.30, 0.30));
+    const auto rightMaterial2 = std::make_shared<rt::shape::material::Matte>(rt::core::Color(0.10, 0.10, 0.60));
+    const auto leftMaterial1  = std::make_shared<rt::shape::material::Metal>(rt::core::Color(0.66, 0.66, 0.66), 0.5);
+    const auto leftMaterial2  = std::make_shared<rt::shape::material::Metal>(rt::core::Color(0.41, 0.41, 0.41), 1.0);
+
+    world.add(std::make_unique<rt::shape::Sphere>(groundMaterial, rt::core::Point3( 0.00, -100.5, -1.00),  100));
+    world.add(std::make_unique<rt::shape::Sphere>(rightMaterial1, rt::core::Point3( 1.10,      0, -1.45), 0.5));
+    world.add(std::make_unique<rt::shape::Sphere>(rightMaterial2, rt::core::Point3( 1.10,   -0.4, -0.90),  0.1));
+    world.add(std::make_unique<rt::shape::Sphere>(leftMaterial1,  rt::core::Point3(-0.95,      0, -1.35), 0.5));
+    world.add(std::make_unique<rt::shape::Sphere>(leftMaterial2,  rt::core::Point3( 0.00,      0, -2.55), 0.5));
     // Camera
     rt::scene::Camera camera{};
 
