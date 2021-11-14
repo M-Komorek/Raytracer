@@ -7,7 +7,16 @@
 
 TEST(CameraShould, calculateRays)
 {
-    const rt::scene::Camera camera{};
+    const auto imageRatio = 16.0 / 9.0;
+    const auto scenePortHeight = 2.0;
+    const auto scenePortWidth = imageRatio * scenePortHeight;
+    
+    const auto origin = rt::core::Point3();
+    const auto horizontal = rt::core::Vector3(scenePortWidth, 0, 0);
+    const auto vertical = rt::core::Vector3(0, scenePortHeight, 0);
+    const auto lowerLeftCorner = origin - horizontal/2 - vertical/2 - rt::core::Vector3(0, 0, 1);
+
+    const rt::scene::Camera camera{origin, lowerLeftCorner, horizontal, vertical};
 
     const auto ray = camera.getRay(10, 10);
 
