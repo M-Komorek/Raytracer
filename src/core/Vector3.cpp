@@ -14,6 +14,37 @@ Vector3::Vector3(const double x, const double y, const double z)
 {
 }
 
+Vector3 Vector3::generateRandomVector3(const double min, const double max)
+{
+    return Vector3(randomDouble(min, max), randomDouble(min, max), randomDouble(min, max));
+}
+
+Vector3 Vector3::generateRandomVector3InsideUnitCircle()
+{
+    while (true)
+    {
+        const auto randomVectorInsideUnitCircle = Vector3{randomDouble(-1, 1), randomDouble(-1, 1), 0};
+        if (randomVectorInsideUnitCircle.length() >= 1)
+        {
+            continue;
+        }
+        return randomVectorInsideUnitCircle;
+    }
+}
+
+Vector3 Vector3::generateRandomVector3InsideUnitSphere()
+{
+    while (true)
+    {
+        const auto randomVectorInsideunitShpere = generateRandomVector3(-1, 1);
+        if (randomVectorInsideunitShpere.length() >= 1)
+        {
+            continue;
+        }
+        return randomVectorInsideunitShpere;
+    }
+}
+
 Vector3 Vector3::operator+(const Vector3& vector) const
 {
     return Vector3(x_+vector.x(), y_+vector.y(), z_+vector.z());

@@ -2,6 +2,9 @@
 
 #include "TestUtils.hpp"
 
+#include "scene/OrthonormalBasis.hpp"
+#include "scene/View.hpp"
+
 #include "scene/Camera.hpp"
 
 
@@ -12,11 +15,13 @@ TEST(CameraShould, calculateRays)
     const auto scenePortWidth = imageRatio * scenePortHeight;
     
     const auto origin = rt::core::Point3();
-    const auto horizontal = rt::core::Vector3(scenePortWidth, 0, 0);
-    const auto vertical = rt::core::Vector3(0, scenePortHeight, 0);
-    const auto lowerLeftCorner = origin - horizontal/2 - vertical/2 - rt::core::Vector3(0, 0, 1);
+    
+    const auto horizontalSpanOfTheScene = rt::core::Vector3(scenePortWidth, 0, 0);
+    const auto verticalSpanOfTheScene = rt::core::Vector3(0, scenePortHeight, 0);
+    const auto lowerLeftCornerOfTheScene = origin - horizontalSpanOfTheScene/2 - verticalSpanOfTheScene/2 - rt::core::Vector3(0, 0, 1);
+    const rt::scene::View view{lowerLeftCornerOfTheScene, horizontalSpanOfTheScene, verticalSpanOfTheScene};
 
-    const rt::scene::Camera camera{origin, lowerLeftCorner, horizontal, vertical};
+    const rt::scene::Camera camera{origin, rt::scene::OrthonormalBasis{}, view};
 
     const auto ray = camera.getRay(10, 10);
 

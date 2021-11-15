@@ -37,7 +37,7 @@ int main()
 
     // Camera
     const auto camera = rt::scene::Camera::create(
-        rt::core::Point3(-2,2,1), rt::core::Point3(0,0,-1), 30, imageRatio);
+        rt::core::Point3(-2,2,1), rt::core::Point3(0,0,-1), 30, imageRatio, 0.4);
 
     // Render
     std::cout << "P3\n" << imageWidth << ' ' << imageHeight << "\n255\n";

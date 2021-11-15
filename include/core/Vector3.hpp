@@ -13,21 +13,9 @@ public:
     Vector3();
     Vector3(const double x, const double y, const double z);
 
-    inline static Vector3 generateRandomVector3(const double min = 0, const double max = 1)
-    {
-        return Vector3(randomDouble(min, max), randomDouble(min, max), randomDouble(min, max));
-    }
-    
-    inline static Vector3 generateRandomVector3InsideUnitSphere()
-    {
-        while (true)
-        {
-            const auto randomVectorInsideunitShpere = generateRandomVector3(-1, 1);
-            if (randomVectorInsideunitShpere.length() >= 1)
-                continue;
-            return randomVectorInsideunitShpere;
-        }
-    }
+    static Vector3 generateRandomVector3(const double min = 0, const double max = 1);
+    static Vector3 generateRandomVector3InsideUnitCircle();
+    static Vector3 generateRandomVector3InsideUnitSphere();
 
     Vector3 operator+(const Vector3& vector) const;
     Vector3 operator-(const Vector3& vector) const;
