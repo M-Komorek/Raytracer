@@ -19,9 +19,12 @@ std::optional<double> Sphere::gotHittedByRay(const core::Ray& ray, const double 
     const double tmax) const
 {
     // Based on the sphere equation
-    const core::Vector3 originMinusCenter = ray.getOrigin()-center_;
-    const auto a = ray.getDirection().scalarProduct(ray.getDirection());
-    const auto halfB = originMinusCenter.scalarProduct(ray.getDirection());
+    const auto rayOrigin = ray.getOrigin();
+    const auto rayDirection = ray.getDirection();
+
+    const core::Vector3 originMinusCenter = rayOrigin-center_;
+    const auto a = rayDirection.scalarProduct(rayDirection);
+    const auto halfB = originMinusCenter.scalarProduct(rayDirection);
     const auto c = originMinusCenter.scalarProduct(originMinusCenter) - radius_*radius_;
 
     const auto delta = halfB*halfB - a*c;

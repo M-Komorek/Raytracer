@@ -19,7 +19,7 @@ int main()
 {
     // Image
     const auto imageRatio = 16.0 / 9.0;
-    const int imageWidth = 400;
+    const int imageWidth = 1200;
     const int imageHeight = static_cast<int>(imageWidth/imageRatio);
     const int samplesPerPixel = 100;
     int maxDepth = 50;
@@ -31,7 +31,7 @@ int main()
     const auto left   = std::make_shared<rt::shape::material::Matte>(rt::core::Color(0.1, 0.2, 0.5));
     const auto right  = std::make_shared<rt::shape::material::Metal>(rt::core::Color(0.8, 0.6, 0.2), 0.0);
 
-    world.add(std::make_unique<rt::shape::Sphere>(ground, rt::core::Point3( -0.0, -100.5, -1.0), 100));
+    world.add(std::make_unique<rt::shape::Sphere>(ground, rt::core::Point3(  0.0, -100.5, -1.0), 100));
     world.add(std::make_unique<rt::shape::Sphere>(left,   rt::core::Point3(  0.0,    0.0, -1.0), 0.5));
     world.add(std::make_unique<rt::shape::Sphere>(right,  rt::core::Point3(  1.0,    0.0, -1.0), 0.5));
 
