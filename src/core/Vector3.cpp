@@ -93,10 +93,9 @@ double Vector3::scalarProduct(const Vector3& vec) const
 
 Vector3 Vector3::crossProduct(const Vector3& vec) const
 {
-    const double crossProductX = y_*vec.z() - z_*vec.y();
-    const double crossProductY = z_*vec.x() - x_*vec.z();
-    const double crossProductZ = x_*vec.y() - y_*vec.x();
-    return Vector3(crossProductX, crossProductY, crossProductZ);
+    return Vector3(y_*vec.z() - z_*vec.y(),
+                   z_*vec.x() - x_*vec.z(),
+                   x_*vec.y() - y_*vec.x());
 }
 
 Vector3 Vector3::normalize()

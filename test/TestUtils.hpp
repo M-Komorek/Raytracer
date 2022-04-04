@@ -7,9 +7,9 @@ namespace testUtils
 template <class threeCoordinatesObject>
 void isEqual(const threeCoordinatesObject& firstObject, const threeCoordinatesObject& secondObject) 
 {
-    EXPECT_DOUBLE_EQ(firstObject.x(), firstObject.x());
-    EXPECT_DOUBLE_EQ(firstObject.y(), firstObject.y());
-    EXPECT_DOUBLE_EQ(firstObject.z(), firstObject.z());
+    EXPECT_DOUBLE_EQ(firstObject.x(), secondObject.x());
+    EXPECT_DOUBLE_EQ(firstObject.y(), secondObject.y());
+    EXPECT_DOUBLE_EQ(firstObject.z(), secondObject.z());
 }
 
 }

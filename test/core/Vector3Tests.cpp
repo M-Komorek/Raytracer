@@ -125,11 +125,11 @@ TEST(Vector3Should, calculateCrossProduct)
 TEST(Vector3Should, makeNormalize)
 {
     rt::core::Vector3 vector{3.0, 4.0, 0.0};
-    vector.normalize();
+    const rt::core::Vector3 normalized = vector.normalize();
 
     const rt::core::Vector3 expectedResult{0.6, 0.8, 0.0};
 
-    testUtils::isEqual<rt::core::Vector3>(vector, expectedResult);
+    testUtils::isEqual<rt::core::Vector3>(normalized, expectedResult);
 }
 
 TEST(Vector3Should, bePrintable)
