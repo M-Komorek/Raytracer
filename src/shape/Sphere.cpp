@@ -28,7 +28,10 @@ std::optional<double> Sphere::gotHittedByRay(const core::Ray& ray, const double 
     const auto c = originMinusCenter.scalarProduct(originMinusCenter) - radius_*radius_;
 
     const auto delta = halfB*halfB - a*c;
-    if (delta < 0) {return {};};
+    if (delta < 0)
+    {
+        return {};
+    };
 
     const auto deltaSqrt = std::sqrt(delta);
     auto root = (-halfB-deltaSqrt) / a;

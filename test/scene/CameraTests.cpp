@@ -21,10 +21,11 @@ TEST(CameraShould, calculateRays)
     const auto lowerLeftCornerOfTheScene = origin - horizontalSpanOfTheScene/2 - verticalSpanOfTheScene/2 - rt::core::Vector3(0, 0, 1);
     const rt::scene::View view{lowerLeftCornerOfTheScene, horizontalSpanOfTheScene, verticalSpanOfTheScene};
 
-    const rt::scene::Camera camera{origin, rt::scene::OrthonormalBasis{}, view};
+    const rt::scene::Camera camera{
+        origin, rt::scene::OrthonormalBasis{rt::core::Vector3{}, rt::core::Vector3{}, rt::core::Vector3{}}, view};
 
     const auto ray = camera.getRay(10, 10);
 
     testUtils::isEqual<rt::core::Point3>(rt::core::Point3(), ray.getOrigin());
-    testUtils::isEqual<rt::core::Vector3>(rt::core::Vector3(32, 18, -1), ray.getDirection());
+    testUtils::isEqual<rt::core::Vector3>(rt::core::Vector3(33.77777777777777, 19, -1), ray.getDirection());
 }
